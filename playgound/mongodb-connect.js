@@ -8,27 +8,25 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (error, db) => {
   }
   console.log('Connected to MongoDB server');
 
-  // db.collection('Todos').find({
-  //   _id: new ObjectID('5a6620e71f02e3049dad9efa')
-  // }).toArray().then((docs) => {
-  //   console.log('TODOS');
-  //   console.log(JSON.stringify(docs, undefined, 2));
-  // }, (error) => {
-  //   console.log('unable to fetch todos', error);
+  // deleteMany
+  // db.collection('Todos').deleteMany({text: 'eat lunch'}).then((result) => {
+  //   console.log(result);
+  // });
+  // deleteOne
+  // db.collection('Todos').deleteOne({text: 'eat lunch'}).then( result => {
+  //   console.log(result);
+  // })
+  //findOneAndDelete
+  // db.collection('Todos').findOneAndDelete({completed: false}).then(result => {
+  //   console.log(result);
   // });
 
-  db.collection('Todos').find().count().then((count) => {
-    console.log(`todos count: ${count}`);
-  }, (error) => {
-    console.log('unable to fetch todos', error);
-  });
+  // db.collection('Users').deleteMany({name: 'hank'}).then(result => {
+  //   console.log(result);
+  // });
 
-  db.collection('Users').find({name: 'hank'}).toArray().then((result) => {
-    console.log('users named hank');
+  db.collection('Users').findOneAndDelete({_id: new ObjectID('5a66236080fd0604e1216386')}).then(result => {
     console.log(result);
-  }, (error) => {
-    console.log('unable to fetch users named hank');
-  })
-
+  });
   // db.close();
 });
